@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etusivu</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body onload="pollsUpdate()">
+    <header>
+        <!-- Top bar, handles login/logout and admin functions for polls -->
+        <nav id="topBanner">
+            <div id="pollControls" style="display: none;">
+
+                <button class="control btn" id="createBtn" onclick="pollCreate()">Lisää äänestys</button>
+            </div>
+
+            <div id="login">
+                <div id="loginBtn">
+                    <input type="text" id="password" placeholder="Salasana">
+                    <button type="button" onclick="login()">Kirjaudu</button>
+                </div>
+                <button type="button" id="logoutBtn" style="display: none" onclick="logout()">Kirjaudu
+                    ulos</button>
+            </div>
+
+        </nav>
+    </header>
+
+    <!-- end of top bar -->
+
+    <!-- Poll creation bar -->
+    <div id="pollCreate" style="display: none;">
+        <form action="#" id="pollName">
+            <input type="text" rows="4" cols="50" name="" id="pollTitle" placeholder="Otsikko">
+            <textarea name="" id="pollDescription" cols="30" rows="10" placeholder="Kuvaus"></textarea>
+            <p class="error" id="pollNptError">* Täytä kaikki kentät</p>
+        </form>
+        <button class="control btn" id="createBtn" onclick="pollFinalize()">Valmis</button>
+    </div>
+    <!-- end of poll creation -->
+
+    <div id="polls">
+
+    </div>
+
+    <!-- template -->
+    <template id="template">
+        <div class="template-card" id="">
+            <h2 class="template-title"></h2>
+            <p class="template-description"></p>
+            <br>
+            <input type="radio" name="" value="juu"> Juu
+            <input type="radio" name="" value="jaa"> Jaa
+            <br>
+            <button onclick="addVote(this)">Äänestä</button>
+            <p class="template-voteResults" id=""></p>
+
+            <button type="button" class="deleteBtn" onclick="pollDelete(this)">Poista
+                äänestys</button>
+        </div>
+    </template>
+
+</body>
+
+
+
+
+<script src="script.js"></script>
+
+</html>
